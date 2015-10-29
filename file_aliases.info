@@ -1,10 +1,6 @@
 name = File Aliases
-description = Adds file aliases to FileFields and Uploads.
+description = Adds file aliases to file based fields.
 dependencies[] = filefield_paths
 dependencies[] = path
 package = Fields
 core = 7.x
-files[] = file_aliases.install
-files[] = file_aliases.module
-files[] = modules/filefield_paths.inc
-

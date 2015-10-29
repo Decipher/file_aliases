@@ -33,8 +33,8 @@ function file_aliases_views_handlers() {
  * Implements hook_views_data_alter().
  */
 function file_aliases_views_data_alter(&$data) {
-  $data['files']['filealias'] = array(
-    'title' => t('Path Alias'),
+  $data['files']['alias'] = array(
+    'title' => t('File alias'),
     'help' => t('The path alias of the file.'),
     'field' => array(
       'handler' => 'file_aliases_views_handler_field_file',

@@ -1,3 +1,5 @@
+File Aliases
+============
 
 The File Aliases module allows you to use token customizable aliases for your
 uploaded files, giving you the ability to keep your file system organized as per
@@ -8,7 +10,7 @@ File Aliases was written and is maintained by Stuart Clark (deciphered).
 
 
 Features
-----------------
+--------
 
 * Customizable File Alias field using Node tokens.
 * Support for:
@@ -25,5 +27,5 @@ Features
 Required Modules
 ----------------
 
-* FileField Paths - http://drupal.org/project/filefield_paths
+* [FileField Paths](https://www.drupal.org/project/filefield_paths)
 
