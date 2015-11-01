@@ -138,7 +138,7 @@ function file_aliases_load_fid($fid) {
   $uri = explode('?', request_uri());
   if (isset($uri[1]) && strpos($result->filemime, 'image') === 0) {
     if (defined('IMAGE_DERIVATIVE_TOKEN')) {
-      list($uri[1],) = explode('&', $uri[1]);
+      list($uri[1], ) = explode('&', $uri[1]);
     }
     $image_style = $uri[1];
     $styles = image_styles();

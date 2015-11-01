@@ -4,3 +4,8 @@ dependencies[] = filefield_paths
 dependencies[] = path
 package = Fields
 core = 7.x
+
+
+; Files - Simpletest
+
+files[] = tests/file_aliases.test
