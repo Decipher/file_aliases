@@ -32,20 +32,6 @@ function file_aliases_menu() {
 }
 
 /**
- * Implements hook_file_load().
- *
- * @param $files
- */
-function file_aliases_file_load($files) {
-  foreach ($files as &$file) {
-    $source = "file_aliases/{$file->fid}";
-    if (($alias = drupal_get_path_alias($source)) != $source) {
-      $file->uri = file_create_url($alias);
-    }
-  }
-}
-
-/**
  * Implements hook_preprocess_image_style().
  *
  * @param $variables
@@ -99,9 +85,6 @@ function file_aliases_preprocess_image(&$variables) {
 /**
  * Implements hook_file_url_alter().
  *
- * @TODO - Respect 'display alias' checkbox.
- *       - Not sure if this function is needed?
- *
  * @param $uri
  */
 function file_aliases_file_url_alter(&$uri) {
@@ -136,6 +119,10 @@ function file_aliases_load_fid($fid) {
     ->fetchAll();
   $result = current($results);
 
+  if (!$result) {
+    return;
+  }
+
   // Render Image Style preset if applicable.
   $uri = explode('?', request_uri());
   if (isset($uri[1]) && strpos($result->filemime, 'image') === 0) {
@@ -153,7 +140,11 @@ function file_aliases_load_fid($fid) {
     }
   }
 
-  if (file_uri_scheme($result->uri) == 'private') {
+  if (!$result || !is_object($result)) {
+    return;
+  }
+
+  elseif (file_uri_scheme($result->uri) == 'private') {
     $file = explode('://', $result->uri);
     file_download($file[0], $file[1]);
   }
