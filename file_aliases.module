@@ -53,14 +53,16 @@ function file_aliases_file_load($files) {
 function file_aliases_preprocess_image_style(&$variables) {
   global $base_url;
   $source = drupal_lookup_path('source', str_replace($base_url . base_path(), '', $variables['path']));
-  $fid = drupal_substr($source, 13);
-  $uri = db_select('file_managed', 'f')
-    ->fields('f', array('uri'))
-    ->condition('fid', $fid)
-    ->execute()
-    ->fetchField();
-  if ($uri) {
-    $variables['path'] = $uri;
+  if ($source !== FALSE) {
+    $fid = drupal_substr($source, 13);
+    $uri = db_select('file_managed', 'f')
+      ->fields('f', array('uri'))
+      ->condition('fid', $fid)
+      ->execute()
+      ->fetchField();
+    if ($uri) {
+      $variables['path'] = $uri;
+    }
   }
 }
 
