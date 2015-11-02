@@ -1,6 +1,7 @@
 File Aliases 7.x-1.x-dev, xxxx-xx-xx (Developmental release)
 --------------------------------------------------------------------------------
 
+- #2259257 by dpintats, Deciphered: Fixed Content Length header.
 - #2256545 by dpintats, Deciphered: Fixed deletion of URL alias.
 - #1909040 by Albert Volkman: Fixed line endings.
 - #1557984 by greg.1.anderson: Fixed database issue if no alias source.
