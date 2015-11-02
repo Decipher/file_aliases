@@ -172,3 +172,14 @@ function file_aliases_file_download($uri) {
     'Content-Disposition' => "filename='{$fileinfo['basename']}'"
   );
 }
+
+/**
+ * Implements hook_file_delete().
+ */
+function file_aliases_file_delete($file) {
+  $alias = "file_aliases/{$file->fid}";
+  if (drupal_get_path_alias($alias)) {
+    $path = path_load($alias);
+    path_delete($path['pid']);
+  }
+}

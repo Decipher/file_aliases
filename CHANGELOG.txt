@@ -1,6 +1,7 @@
 File Aliases 7.x-1.x-dev, xxxx-xx-xx (Developmental release)
 --------------------------------------------------------------------------------
 
+- #2256545 by dpintats, Deciphered: Fixed deletion of URL alias.
 - #1909040 by Albert Volkman: Fixed line endings.
 - #1557984 by greg.1.anderson: Fixed database issue if no alias source.
 - #1365384 by dpintats: Fixed issue with files not being deleted.
