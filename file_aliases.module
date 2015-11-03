@@ -96,7 +96,7 @@ function file_aliases_file_url_alter(&$uri) {
   if ($fid) {
     $source = "file_aliases/{$fid}";
     if (($alias = drupal_get_path_alias($source)) != $source) {
-      $uri = file_create_url($alias);
+      $uri = url($alias, array('absolute' => TRUE));
     }
   }
 }
