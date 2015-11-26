@@ -76,10 +76,10 @@ env:
     - DRUPAL_TI_COVERAGE_FILE="build/logs/clover.xml"
 
     # Debug options
-    - DRUPAL_TI_DEBUG="-x -v"
+    #- DRUPAL_TI_DEBUG="-x -v"
     # Set to "all" to output all files, set to e.g. "xvfb selenium" or "selenium",
     # etc. to only output those channels.
-    - DRUPAL_TI_DEBUG_FILE_OUTPUT="selenium xvfb webserver"
+    #- DRUPAL_TI_DEBUG_FILE_OUTPUT="selenium xvfb webserver"
 
   matrix:
     # [[[ SELECT ANY OR MORE OPTIONS ]]]
@@ -107,7 +107,7 @@ install:
 
 before_script:
   - drupal-ti before_script
-  - drush dl token --destination="$TRAVIS_BUILD_DIR/../drupal-7/drupal/sites/all/modules"
+  - drush dl token-7.x pathauto-7.x --destination="$TRAVIS_BUILD_DIR/../drupal-7/drupal/sites/all/modules"
 
 script:
   - drupal-ti script

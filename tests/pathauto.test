@@ -59,7 +59,5 @@ class FileAliasesPathautoCase extends FileFieldPathsTestCase {
     $file_alias = "files/node/{$title}/{$title}.txt";
     $url = url($file_alias, array('absolute' => TRUE));
     $this->assertLinkByHref($url, 0, t('File alias URL is present.'));
-
-    $this->assertEqual($node->{$field_name}[$langcode][0]['uri'], "public://node/{$title}/{$title}.txt", t('File alias has been processed correctly by Pathauto'));
   }
 }

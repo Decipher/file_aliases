@@ -61,9 +61,12 @@ function file_aliases_filefield_paths_process_file($type, $entity, $field, $inst
           $type  => $entity
         );
 
-        // Process filename.
-        $settings['file_name']['options']['context'] = 'file_alias';
-        $file['alias'] = filefield_paths_process_string($settings['file_alias']['value'], $token_data, $settings['file_alias']);
+        // Process file alias.
+        // This is a bit hacky, the context should be 'file_alias', but to
+        // ensure the file name doesn't have it's '.' removed we need to
+        // identify as the file name.
+        $settings['file_alias']['options']['context'] = 'file_name';
+        $file['alias'] = filefield_paths_process_string($settings['file_alias']['value'], $token_data, $settings['file_alias']['options']);
 
         $source = "file_aliases/{$file['fid']}";
         $alias = drupal_get_path_alias($source);
