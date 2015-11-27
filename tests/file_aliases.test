@@ -46,13 +46,14 @@ class FileAliasesTestCase extends FileFieldPathsTestCase {
    * Test file uploads with provided file scheme.
    *
    * @param $scheme
+   * @param string $alias
    */
-  function _testFileUpload($scheme) {
+  function _testFileUpload($scheme, $alias = 'files/node/[node:nid]/[node:nid].[file:ffp-extension-original]') {
     $langcode = LANGUAGE_NONE;
 
     // Create a File field with a file alias.
     $field_name = drupal_strtolower($this->randomName());
-    $instance_settings['filefield_paths']['file_alias']['value'] = 'files/node/[node:nid]/[node:nid].[file:ffp-extension-original]';
+    $instance_settings['filefield_paths']['file_alias']['value'] = $alias;
     $field_settings['uri_scheme'] = $scheme;
     $this->createFileField($field_name, $this->content_type, $field_settings, $instance_settings);
 
@@ -93,5 +94,12 @@ class FileAliasesTestCase extends FileFieldPathsTestCase {
     // Ensure the URL alias is deleted when the file is deleted.
     $path = path_load(array('alias' => $file_alias));
     $this->assertFalse($path, t('URL alias has been deleted successfully.'));
+  }
+
+  /**
+   * Test a Rooted file alias.
+   */
+  function testRootedAlias() {
+    $this->_testFileUpload('public', '/files/node/[node:nid]/[node:nid].[file:ffp-extension-original]');
   }
 }

@@ -68,6 +68,21 @@ function file_aliases_filefield_paths_process_file($type, $entity, $field, $inst
         $settings['file_alias']['options']['context'] = 'file_name';
         $file['alias'] = filefield_paths_process_string($settings['file_alias']['value'], $token_data, $settings['file_alias']['options']);
 
+        // Convert the file alias into an absolute URL and ensure that it begins
+        // with the current base URL and path.
+        $url = url($file['alias'], array('absolute' => TRUE));
+        $base = $GLOBALS['base_url'] . base_path();
+        if (substr($url, 0, strlen($base)) !== $base) {
+          watchdog('file_aliases', 'The file alias %alias could not be created for %destination as it is invalid.', array(
+            '%alias'       => $file['alias'],
+            '%destination' => $file['uri'],
+          ));
+          continue;
+        }
+
+        // Remove the current base URL and path to normalise the file alias.
+        $file['alias'] = substr($url, strlen($base));
+
         $source = "file_aliases/{$file['fid']}";
         $alias = drupal_get_path_alias($source);
         if ($alias !== $source) {

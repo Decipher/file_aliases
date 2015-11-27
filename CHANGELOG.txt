@@ -1,6 +1,7 @@
 File Aliases 7.x-1.x-dev, xxxx-xx-xx (Developmental release)
 --------------------------------------------------------------------------------
 
+- #2620140: Fixed issue with rooted and URL based URL aliases.
 - #2613660 by iamjdcollins, Deciphered: Fixed issue with Pathauto integration.
 - #2259257 by dpintats, Deciphered: Fixed Content Length header.
 - #2256545 by dpintats, Deciphered: Fixed deletion of URL alias.
