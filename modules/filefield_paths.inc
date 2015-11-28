@@ -72,6 +72,9 @@ function file_aliases_filefield_paths_process_file($type, $entity, $field, $inst
         // with the current base URL and path.
         $url = url($file['alias'], array('absolute' => TRUE));
         $base = $GLOBALS['base_url'] . base_path();
+        if (variable_get('clean_url', 0) == FALSE) {
+          $base .= '?q=';
+        }
         if (substr($url, 0, strlen($base)) !== $base) {
           watchdog('file_aliases', 'The file alias %alias could not be created for %destination as it is invalid.', array(
             '%alias'       => $file['alias'],
